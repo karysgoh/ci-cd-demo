@@ -68,7 +68,7 @@ export const authMiddleware = async (req: AuthRequest, res: Response, next: Next
             roles: user.roles.map((ur: { role: { name: string } }) => ur.role.name)
         };
 
-        next();
+        return next();
     } catch (error) {
         return res.status(401).json({ error: 'Invalid or expired token' });
     }
