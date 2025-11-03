@@ -69,7 +69,9 @@ jobs:
       - name: Build Web
         env:
           VITE_API_URL: http://localhost:5174/api
-        run: npm run build --workspace=web
+        run: |
+          cd web
+          npm run build
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
