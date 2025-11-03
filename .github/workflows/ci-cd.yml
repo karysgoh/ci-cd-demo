@@ -49,6 +49,7 @@ jobs:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/cicd_demo_test
         run: |
           cd api
+          npx prisma generate
           npx prisma migrate deploy
           SEED_DISABLE=0 npx ts-node -r dotenv/config prisma/seed.ts
 
