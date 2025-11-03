@@ -1,0 +1,25 @@
+{
+  "name": "ci-cd-demo",
+  "version": "1.0.0",
+  "description": "Full-stack CI/CD demo with React, Prisma, and Playwright",
+  "private": true,
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=api\" \"npm run dev --workspace=web\"",
+    "build": "npm run build --workspace=api && npm run build --workspace=web",
+    "test": "npm run test --workspace=api && npm run test --workspace=web",
+    "e2e": "npm run e2e --workspace=web",
+    "lint": "npm run lint --workspace=api && npm run lint --workspace=web",
+    "clean": "rm -rf api/dist api/node_modules web/dist web/node_modules node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20.19.0",
+    "npm": ">=10.8.2"
+  }
+}
